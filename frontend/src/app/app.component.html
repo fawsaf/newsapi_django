@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News App</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .search-bar {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">News App</h1>
+    
+    <div class="row justify-content-center search-bar">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search news..." [(ngModel)]="item">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" (click)="onChange()">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <label for="Value">Choose a Value:</label>
+    <select id="Value" class="form-control" [(ngModel)]="selectedCategory" (change)="onChange()">
+      <option value="business">Business</option>
+      <option value="entertainment">Entertainment</option>
+      <option value="general">General</option>
+      <option value="health">Health</option>
+      <option value="science">Science</option>
+      <option value="sports">Sports</option>
+      <option value="technology">Technology</option>
+    </select>
+    <br> <br>
+    <div id="news-container" class="container">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let article of newsData">
+          <div class="card">
+            <img [src]="article.urlToImage" class="card-img-top" alt="News Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ article.title }}</h5>
+              <p class="card-text">{{ article.description }}</p>
+              <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
